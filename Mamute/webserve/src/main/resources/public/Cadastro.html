@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<!DOCTYPE html>
+<html dir="ltr" lang="pt">
+    <head>
+        <title>MAMUTE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Css/Main.css" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+	<script language="javascript" src="java/Main.js"></script>
+		
+    </head>
+    <body
+	<div class="body1">
+        <div class="bord-para-menubar">
+              <div class="po"><h1>Mamute Credito</h1></div>
+            <div class="pa"><img src = "Logo2.png" style="width:50px;height:50px;left:2px;"/> 
+          
+            </div>
+            
+        </div>
+        <div class="borda-para-cadastro">
+   <h1>Cadastro</h1> 
+   <form action="Gravar" method="post" id="meuFormulario">
+        <label for="nome">Nome Completo:</label><br>
+        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo"><br>
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail"><br>
+      <label for="username">CPF do Usuário:</label><br>
+     <input type="text" id="username" name="username" required maxlength="14" oninput="mascaraCPF(this)" placeholder="000.000.000-00">
+<br>
+      <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password" required placeholder="**********"><br><br>
+      <label for="Endereco">Endereco:</label><br>
+        <input type="text" id="Endereco" name="Endereco" required placeholder="Digite seu Endereço"><br>
+        <label for="CEP"></label><br>
+        <input type="text" id="CEP" name="CEP" required placeholder="Digite seu CEP" maxlength="9" oninput="mascaraCEP(this)" placeholder="00000-000"><br>
+        <label for="telefone">Telefone:</label><br>
+        <input type="text" id="telefone" name="telefone" required placeholder="Digite seu telefone" maxlength="15" oninput="mascaraTelefone(this)" placeholder="(00) 00000-0000"><br>
+        <label for="data_nascimento">Data de Nascimento:</label><br>    
+        <input type="date" id="data_nascimento" name="data_nascimento" required><br>
+        <label for="renda_mensal">Renda Mensal:</label><br>
+        <input type="number" id="renda_mensal" name="renda_mensal" required placeholder="Digite sua renda mensal"><br>
+        <label for="estado_civil">Estado Civil:</label><br>
+        <select id="estado_civil" name="estado_civil" required>
+            <option value="solteiro">Solteiro</option>
+            <option value="casado">Casado</option>
+            <option value="divorciado">Divorciado</option>
+            <option value="viuvo">Viúvo</option>
+            <option value="outro">Outro</option>
+        </select><br>
+        <label for="profissao">Profissão:</label><br>
+        <input type="text" id="profissao" name="profissao" required placeholder="Digite sua profissão"><br>
+        <label for="empresa">Empresa:</label><br>
+        <input type="text" id="empresa" name="empresa" required placeholder="Digite o nome da sua empresa"><br>
+        <label for="cargo">Cargo:</label><br>
+        <input type="text" id="cargo" name="cargo" required placeholder="Digite seu cargo"><br>
+        <label for="tempo_empresa">Tempo na Empresa:</label><br>
+        <input type="text" id="tempo_empresa" name="tempo_empresa" required placeholder="Digite o tempo que trabalha na empresa"><br>
+        <label for="telefone_empresa">Telefone da Empresa:</label><br>
+        <input type="text" id="telefone_empresa" name="telefone_empresa" required placeholder="Digite o telefone da empresa" maxlength="15" oninput="mascaraTelefone(this)" placeholder="(00) 00000-0000"><br>
+        <label for="referencia">Referência Pessoal:</label><br>
+        <input type="text" id="referencia" name="referencia" required placeholder="Digite uma referência pessoal"><br>
+        <label for="telefone_referencia">Telefone da Referência:</label><br>
+        <input type="text" id="telefone_referencia" name="telefone_referencia"
+                required placeholder="Digite o telefone da referência" maxlength="15" oninput="mascaraTelefone(this)" placeholder="(00) 00000-0000"><br>
+        <label for="observacoes">Observações:</label><br>
+       <textarea id="observacoes" name="observacoes" rows="4" cols="50" placeholder="Digite suas observações"></textarea>
+<br>
+        <label for="termos">Aceito os termos e condições:</label>
+        <input type="checkbox" id="termos" name="termos" required><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+    <a href="Login.html"><div class="font_cadastro">Já tem cadastro? Faça login</div></a><br><br>
+
+  
+      
+
+<script>
+function mascaraCPF(campo) {
+    let cpf = campo.value.replace(/\D/g, ""); // Remove tudo que não é número
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    campo.value = cpf;
+}
+function mostrarSenha() {
+  const campo = document.getElementById("password");
+  if (campo.type === "password") {
+    campo.type = "text";
+  } else {
+    campo.type = "password";
+  }
+}
+function mascaraCEP(campo) {
+    let cep = campo.value.replace(/\D/g, ""); // Remove tudo que não é número
+    cep = cep.replace(/(\d{5})(\d)/, "$1-$2");
+    campo.value = cep;
+}
+function mascaraTelefone(campo) {
+    let telefone = campo.value.replace(/\D/g, ""); // Remove tudo que não é número
+    if (telefone.length > 10) {
+        telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+    } else {
+        telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+    }
+    campo.value = telefone;
+}
+
+</script>
+            </div>
+        </div>
+        </body>
+            </html>

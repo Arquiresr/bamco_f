@@ -1,0 +1,704 @@
+.menu-bar{
+	height:9%;
+	width:100%;
+	background-color: black
+	;
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	
+}
+.img1{
+  position: absolute;
+  left: 95%;
+  top: 0%;
+ 
+ 
+  background-repeat: no-repeat; /* Evita repetição da imagem */
+  background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+}
+btn-Opcao{
+  position:absolute;
+  left:3%;
+  top:40%;
+  height: 5%;
+  width:16%;
+  background:#ffffff;
+  color:#000000;
+  font-size:14pt;
+  border: #000 solid 1px;
+  cursor: pointer;
+}
+btn-Opcao:hover{
+    background-color:blue;
+  transition-duration: 0.2s;
+}
+btn-opcao1{
+  position:absolute;
+  left:21%;
+  top:40%;
+  height: 5%;
+  width:16%;
+  background:#ffffff;
+  color:#000000;
+  font-size:14pt;
+  border: #000 solid 1px;
+  cursor: pointer;
+}
+btn-opcao1:hover{
+    background-color:blue;
+  transition-duration: 0.2s;
+}
+btn-opcao2{
+  position:absolute;
+  left:39%;
+  top:40%;
+  height: 5%;
+  width:16%;
+  background:#ffffff;
+  color:#000000;
+  font-size:14pt;
+  border: #000 solid 1px;
+  cursor: pointer;
+}
+btn-opcao2:hover{
+    background-color:blue;
+  transition-duration: 0.2s;
+}
+btn-opcao3{
+  position:absolute;
+  left:57%;
+  top:40%;
+  height: 5%;
+  width:16%;
+  background:#ffffff;
+  color:#000000;
+  font-size:14pt;
+  border: #000 solid 1px;
+  cursor: pointer;
+}
+btn-opcao3:hover{
+    background-color:blue;
+  transition-duration: 0.2s;
+}
+btn-opcao4{
+  position:absolute;
+  left:75%;
+  top:40%;
+  height: 5%;
+  width:16%;
+  background:#ffffff;
+  color:#000000;
+  font-size:14pt;
+  border: #000 solid 1px;
+  cursor: pointer;
+
+}
+opcao4:hover{
+    background-color:blue;
+  transition-duration: 0.2s;
+}
+.borda-para-foto-perfil{
+  position:absolute;
+  left:85%;
+  top:10%;
+  height:10%;
+  width:10%;
+  background:#FFF;
+    border: 2px solid black;
+  border-radius: 50%;
+}
+hp{
+  font-size: 20pt;
+
+}
+.borda_para_iformacao{
+  position:absolute;
+  left:0%;
+  top:14%;
+  height:89%;
+  width:100%;
+  background:#FFF;
+    border: 2px solid black;
+}
+.borde-dinheiro{
+  position:absolute;
+  left:0%;
+  top:26%;
+  height:12%;
+  width:100%;
+  background:#FFF;
+    border: 2px solid black;
+}
+btn{
+	position: absolute;
+	color:#FFFF;
+	height:155%;
+	width:9%;
+	background:black #fff;
+	left: 23%;
+	top: 32%;
+}
+btn:hover{
+    background-color:blue;
+	transition-duration: 0.2s;
+}
+btn1{
+	position: absolute;
+	color:#FFFF;
+	height:155%;
+	width:9%;
+	background:black;
+	left: 39%;
+	top: 32%;
+	cursor:pointer;
+}
+btn1:hover{
+    background-color:blue;
+	transition-duration: 0.2s;
+}
+body{
+	padding:0%;
+	margin:0%;
+}
+.body1{
+	padding:0%;
+	margin:0%;
+	background-image: url("image.jpg");
+
+	background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+pa{
+	
+    height:5px;
+	width:5px;
+	top: 0%;
+}
+.borda-para-login{
+	position:absolute;
+	left:26%;
+	top:24%;
+	height:50%;
+	width:50%;
+	background:#FFF;
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+
+}	
+.po{
+	position: absolute;
+	left: 4%;
+}
+.bord-para-menubar{
+	height:9%;
+	width:100%;
+	background-color: rgb(255, 255, 255)
+	;
+	border:#000 solid 1px;
+	position: absolute;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	left: 0%;
+	top: 0%;
+}
+
+input[type=text]{
+  width: 70%;
+ height:30%;
+
+    font-size: 20pt;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=password]{
+  width: 70%;
+ height:40%;
+  font-size: 20pt;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=email]{
+  width: 70%;
+ height:40%;
+  font-size: 20pt;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=number]{
+  width: 70%;
+ height:40%;
+  font-size: 20pt;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=tel]{
+  width: 70%;
+ height:40%;
+  font-size: 20pt;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=date]{
+  width: 70%;
+ height:40%;
+  font-size: 20pt;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=checkbox]{
+  width: 20px;
+ height:20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=radio]{
+  width: 20px;
+ height:20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+select{
+  width: 70%;
+ height:30%;
+  background-color: #ffffff;
+  display: inline-block;
+  border: 1px solid #ccc;
+    font-size: 20pt;
+  border-radius: 4px;
+  color: #000;
+  box-sizing: border-box;
+}
+select:hover {
+  background-color: #dfdfdf;
+  color: white;
+  transition-duration: 0.2s;
+}
+textarea{
+  width: 70%;
+ height:30%;
+  background-color: #ffffff;
+  display: inline-block;
+  border: 1px solid #ccc;
+	font-size: 20pt;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit]{
+  width: 70%;
+ height:30%;
+  background-color: #3208a3;
+  display: inline-block;
+  border: 1px solid #ccc;
+    font-size: 20pt;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit]:hover {
+  background-color: #5c0fdd;
+  color: white;
+  transition-duration: 0.2s;
+}
+.font_cadastro{
+	position:absolute;
+	font-size: 14pt;
+cursor: pointer;
+	left: 34%;
+	color:grey;
+}
+
+
+	  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:black;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.Bord1{
+	position:absolute;
+	left:0%;
+	top:13%;
+	height:50%;
+	width:100%;
+	background:blue;
+	
+}
+.a{
+	color:#FFF;
+	float:left;
+} 
+.font2{
+	position:absolute;
+	left:4%;
+	top:3%; 
+	color:#fff;
+	font-size:24pt;
+}
+.Borda-redonda{
+	position: absolute;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    background-image: url("Cartao1.png");
+    
+    background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+.Borda-redonda1{
+	position: absolute;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    background-image: url("cartao_mi.png");
+    
+    background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+.imagem_de_perfil{
+	position: absolute;
+	left: 90%;
+	top: 16%;
+	background-color: #FFF;
+	color:#FFF;
+	cursor: pointer;
+
+	
+	
+	
+	
+}
+.FONT3{
+	position:absolute;
+	left:0%;
+	top:80%;
+}
+.Rodape{
+	height:20%;
+	width:100%;
+	background-color: gray;
+	position: absolute;
+	left: 0%;
+	top: 250%;
+	
+	
+}
+.f1{
+	    position: absolute;
+	top:1%;
+	left:20%;
+}
+.f2{
+	 position: absolute;
+	top:1%;
+	left:40%;
+}
+.fi{
+	position: absolute;
+	top:1%;
+	left:0%;
+	color:gray;
+}
+.f11{
+	position: absolute;
+	top:1%;
+	left:60%;
+	
+}
+.Roda{
+	height:6%;
+	width:100%;
+	background-color: black;
+	position: absolute;
+	left: 0%;
+	top: 269%;
+	color:#ffff;
+}
+.borda3{
+ 	position:absolute;
+	left:0%;
+	top:14%;
+	height:70%;
+	width:100%;
+	background:#FFF;
+    border: 2px solid black;
+}
+.borda4{
+ 	position:absolute;
+	left:54%;
+	top:0%;
+	height:100%;
+	width:46%;
+	color:#FFF;
+    background:blue;
+}
+.div-para-imagem-rolante{
+	position:absolute;
+	left:0%;
+	top: 109%;
+	height:70%;
+	width:100%;
+	background:#Ff23;
+    
+	
+}
+.Barra_menu{
+  position:absolute;
+  left:0%;
+  top:8%;
+  height:5%;
+  width:100%;
+  background:#000;
+    
+  
+}
+button-menu{
+  position:absolute;
+  left:1%;
+    top:20%;
+   
+    background: #000;
+    color: #fff;
+    font-size: 12pt;
+  cursor: pointer;
+}
+button-menu :hover{
+    background-color:blue;
+  transition-duration: 0.2s;
+}
+
+.div-para-butao{
+	position:absolute;
+	left: 97%;
+    top: 0%;
+	 height: 100%;
+    width: 3%;
+    background: #000;
+    color: #fff;
+    font-size: 27pt;
+}
+button{
+	position:absolute;
+	height:100%;
+	width:3%;
+	background:#000;
+	color:#fff;
+	font-size:27pt;
+}
+.div-para-butao1{
+	position:absolute;
+	left: 0%;
+    top: 0%;
+	 height: 100%;
+    width: 3%;
+    background: #000;
+    color: #fff;
+    font-size: 27pt;
+}
+.div-para-imagem-rolante1{
+	position:absolute;
+	left:0%;
+	top: 155%;
+	height:70%;
+	width:100%;
+	background:#Ff23;
+    
+}
+.borda-para-cadastro{
+	position:absolute;
+	left:2%;
+	top:17%;
+	height:230%;
+	width:80%;
+	background:#FFF;
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+btn{
+	left: 86%;
+	top: 48%;
+	position: absolute;
+	color:#FFFF;
+	height:9%;
+	width:9%;
+	cursor: pointer;
+}
+.div-para-mostra-projeto{
+	 	position:absolute;
+	left:0%;
+	top:14%;
+	height:89%;
+	width:100%;
+	background:#FFF;
+    border: 2px solid black;
+
+	
+}
+font1{
+	font-size:30pt;
+	color: gray;
+	
+}
+.imagem1{
+ clip-path: circle(50%);
+  width: 200px;
+  height: 200px;
+  }
+  font2{
+	 font-size:20pt;
+	 left:0%;
+	 color:#FFF;
+	  
+  }
+.div-para-imagem-rolante3{
+	position:absolute;
+	left:0%;
+	top: 63%;
+	height:70%;
+	width:100%;
+	background:#Ff23;
+    
+	
+}
+.origem{
+	position:absolute;
+	top:13%;
+	left:16%;
+	font-size: 12pt;
+}
+.orig{
+	position:absolute;
+	top:53%;
+	left:16%;
+	font-size: 12pt;
+}
+.hamburger{
+	display:none;
+}
+.Menua{
+	position:absolute;
+	left:5%;
+	top:0%;
+	
+}
+@media (max-width: 768px) {
+  /* Ajuste o menu-bar */
+  .menu-bar {
+    height: 8%;
+    position: fixed;
+    z-index: 1000;
+  }
+
+  /* Botão de hambúrguer para o menu lateral */
+  .menu-bar .hamburger {
+    display: block;
+    position: absolute;
+   	top:20%;
+    left: 10px;
+    font-size: 24px;
+    color: #FFF;
+    cursor: pointer;
+  }
+
+  /* Esconde o menu inicialmente */
+  .menu-bar ul {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    background-color: black;
+    z-index: 999;
+  }
+
+  .menu-bar ul li {
+    float: none;
+    width: 100%;
+  }
+
+  .menu-bar ul li a {
+    display: block;
+    padding: 20px;
+  }
+
+  /* Mostra o menu quando ativado */
+  .menu-bar ul.active {
+    display: block;
+  }
+
+  /* Ajustes para o botão */
+  .btn, .btn1 {
+    width: 90%;
+    height: 45px;
+    position: relative;
+    left: 5%;
+    top: 15%;
+  }
+
+  /* Esconde alguns elementos na tela de celular */
+  .Bord1, .div-para-imagem-rolante, .Rodape {
+    width:100%;
+  }
+
+  /* Ajustes adicionais */
+  .Borda-redonda {
+    display: none; /* Oculta o elemento no celular */
+  }
+
+  .borda3, .borda4 {
+    height: auto;
+    width: 100%;
+  }
+
+  /* Ajuste o font-size */
+  .font2 {
+    font-size: 18pt;
+  }
+
+  .imagem1 {
+    width: 100px;
+    height: 100px;
+  }
+}
