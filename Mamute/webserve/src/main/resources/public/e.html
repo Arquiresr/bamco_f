@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt">
+<head>
+    <title>MAMUTE - Extrato Bancário</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/Main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .extrato-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .extrato-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .extrato-header h1 {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .info-cliente {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .info-cliente h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .filtros {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filtros h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .filtro-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-control {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        .btn-gerar {
+            width: 20%;
+            padding: 15px;
+            height: 14%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn-gerar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .transacoes-preview {
+            margin-top: 30px;
+        }
+        
+        .transacoes-preview h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .transacao-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .transacao-card.saida {
+            border-left-color: #e74c3c;
+        }
+        
+        .transacao-card.entrada {
+            border-left-color: #2ecc71;
+        }
+        
+        .transacao-info {
+            flex: 1;
+        }
+        
+        .transacao-tipo {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .transacao-detalhe {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .transacao-valor {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .transacao-valor.saida {
+            color: #e74c3c;
+        }
+        
+        .transacao-valor.entrada {
+            color: #2ecc71;
+        }
+        
+        .resumo-financeiro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .resumo-item h4 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .resumo-item .valor {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Superior -->
+    <div class="bord-para-menubar">
+        <div class="po"><h1>Mamute Credito</h1></div>
+        <div class="pa"><img src="Logo2.png" style="width:50px;height:50px;" alt="Logo"/></div>
+        <div class="img1">
+            <a href="/Principal_usuario.html">
+                <img src="exit.png" alt="Voltar" style="width:50px;height:50px;"/>
+            </a>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="extrato-container">
+        <div class="extrato-header">
+            <h1>📊 Extrato Bancário</h1>
+            <p>Gere seu extrato detalhado em PDF</p>
+        </div>
+
+        <!-- Informações do Cliente -->
+        <div class="info-cliente">
+            <h3>Dados da Conta</h3>
+            <div class="info-row">
+                <span class="info-label">Cliente:</span>
+                <span id="nomeCliente">Carregando...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">CPF:</span>
+                <span id="cpfCliente">Carregando...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">E-mail:</span>
+                <span id="emailCliente">Carregando...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Saldo Atual:</span>
+                <span id="saldoCliente" style="color: #667eea; font-weight: bold;">R$ 0,00</span>
+            </div>
+        </div>
+
+        <!-- Resumo Financeiro -->
+        <div class="resumo-financeiro" id="resumoFinanceiro" style="display: none;">
+            <div class="resumo-item">
+                <h4>Total de Entradas</h4>
+                <div class="valor" id="totalEntradas">R$ 0,00</div>
+            </div>
+            <div class="resumo-item">
+                <h4>Total de Saídas</h4>
+                <div class="valor" id="totalSaidas">R$ 0,00</div>
+            </div>
+            <div class="resumo-item">
+                <h4>Saldo do Período</h4>
+                <div class="valor" id="saldoPeriodo">R$ 0,00</div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filtros">
+            <h3>Filtros do Extrato</h3>
+            <div class="filtro-group">
+                <div>
+                    <label>Data Inicial:</label>
+                    <input type="date" id="dataInicial" class="form-control">
+                </div>
+                <div>
+                    <label>Data Final:</label>
+                    <input type="date" id="dataFinal" class="form-control">
+                </div>
+                <div>
+                    <label>Tipo:</label>
+                    <select id="tipoTransacao" class="form-control">
+                        <option value="todas">Todas</option>
+                        <option value="PIX_ENVIADO">PIX Enviado</option>
+                        <option value="PIX_RECEBIDO">PIX Recebido</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn-gerar" onclick="carregarTransacoes()">
+                🔍 Visualizar Transações
+            </button>
+        </div>
+
+        <!-- Preview das Transações -->
+        <div class="transacoes-preview" id="transacoesPreview" style="display: none;">
+            <h3>Transações Encontradas: <span id="totalTransacoes">0</span></h3>
+            <div id="listaTransacoes"></div>
+            
+            <button class="btn-gerar" onclick="gerarPDF()" style="margin-top: 20px;">
+                📄 Gerar PDF do Extrato
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let dadosCliente = {};
+        let transacoes = [];
+
+        // ========== CARREGAR DADOS DO CLIENTE ==========
+        fetch("/api/user")
+            .then(r => r.json())
+            .then(dados => {
+                dadosCliente = dados;
+                document.getElementById("nomeCliente").textContent = dados.nome || "N/A";
+                document.getElementById("cpfCliente").textContent = dados.cpf || "N/A";
+                document.getElementById("emailCliente").textContent = dados.email || "N/A";
+                
+                const saldo = dados.dinheiro ?? 0;
+                document.getElementById("saldoCliente").textContent = formatarMoeda(saldo);
+                
+                // Definir datas padrão (último mês)
+                const hoje = new Date();
+                const umMesAtras = new Date(hoje);
+                umMesAtras.setMonth(hoje.getMonth() - 1);
+                
+                document.getElementById("dataFinal").valueAsDate = hoje;
+                document.getElementById("dataInicial").valueAsDate = umMesAtras;
+            })
+            .catch(err => console.error("Erro ao carregar dados:", err));
+
+        // ========== CARREGAR TRANSAÇÕES ==========
+        function carregarTransacoes() {
+            fetch("/api/transacoes")
+                .then(r => r.json())
+                .then(data => {
+                    transacoes = filtrarTransacoes(data);
+                    exibirTransacoes();
+                    calcularResumo();
+                })
+                .catch(err => {
+                    console.error("Erro:", err);
+                    alert("Erro ao carregar transações!");
+                });
+        }
+
+        // ========== FILTRAR TRANSAÇÕES ==========
+        function filtrarTransacoes(todasTransacoes) {
+            const dataInicial = new Date(document.getElementById("dataInicial").value);
+            const dataFinal = new Date(document.getElementById("dataFinal").value);
+            const tipo = document.getElementById("tipoTransacao").value;
+            
+            return todasTransacoes.filter(t => {
+                const dataTransacao = new Date(t.data);
+                const matchData = dataTransacao >= dataInicial && dataTransacao <= dataFinal;
+                const matchTipo = tipo === 'todas' || t.tipo === tipo;
+                
+                return matchData && matchTipo;
+            });
+        }
+
+        // ========== EXIBIR TRANSAÇÕES ==========
+        function exibirTransacoes() {
+            const container = document.getElementById("listaTransacoes");
+            const preview = document.getElementById("transacoesPreview");
+            
+            if (transacoes.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999;">Nenhuma transação encontrada no período.</p>';
+                preview.style.display = 'block';
+                return;
+            }
+            
+            document.getElementById("totalTransacoes").textContent = transacoes.length;
+            preview.style.display = 'block';
+            container.innerHTML = '';
+            
+            transacoes.forEach(t => {
+                const isEnviado = t.tipo && t.tipo.includes('ENVIADO');
+                const classe = isEnviado ? 'saida' : 'entrada';
+                const simbolo = isEnviado ? '-' : '+';
+                const emoji = isEnviado ? '📤' : '📥';
+                
+                const div = document.createElement('div');
+                div.className = `transacao-card ${classe}`;
+                div.innerHTML = `
+                    <div class="transacao-info">
+                        <div class="transacao-tipo">${emoji} ${t.tipo || 'TRANSAÇÃO'}</div>
+                        <div class="transacao-detalhe">Chave PIX: ${t.chavePix || 'N/A'}</div>
+                        <div class="transacao-detalhe">${formatarData(t.data)}</div>
+                    </div>
+                    <div class="transacao-valor ${classe}">
+                        ${simbolo} ${formatarMoeda(t.valor || 0)}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // ========== CALCULAR RESUMO ==========
+        function calcularResumo() {
+            let entradas = 0;
+            let saidas = 0;
+            
+            transacoes.forEach(t => {
+                const valor = t.valor || 0;
+                if (t.tipo && t.tipo.includes('ENVIADO')) {
+                    saidas += valor;
+                } else {
+                    entradas += valor;
+                }
+            });
+            
+            const saldo = entradas - saidas;
+            
+            document.getElementById("totalEntradas").textContent = formatarMoeda(entradas);
+            document.getElementById("totalSaidas").textContent = formatarMoeda(saidas);
+            document.getElementById("saldoPeriodo").textContent = formatarMoeda(saldo);
+            document.getElementById("resumoFinanceiro").style.display = 'grid';
+        }
+
+        // ========== GERAR PDF ==========
+        function gerarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Cabeçalho
+            doc.setFontSize(20);
+            doc.setTextColor(102, 126, 234);
+            doc.text('MAMUTE CRÉDITO', 105, 20, { align: 'center' });
+            
+            doc.setFontSize(16);
+            doc.text('Extrato Bancário', 105, 30, { align: 'center' });
+            
+            // Dados do Cliente
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Cliente: ${dadosCliente.nome}`, 20, 45);
+            doc.text(`CPF: ${dadosCliente.cpf}`, 20, 52);
+            doc.text(`E-mail: ${dadosCliente.email}`, 20, 59);
+            doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')}`, 20, 66);
+            
+            // Período
+            const dataInicial = document.getElementById("dataInicial").value;
+            const dataFinal = document.getElementById("dataFinal").value;
+            doc.text(`Período: ${new Date(dataInicial).toLocaleDateString('pt-BR')} a ${new Date(dataFinal).toLocaleDateString('pt-BR')}`, 20, 73);
+            
+            // Tabela de Transações
+            const tableData = transacoes.map(t => {
+                const isEnviado = t.tipo && t.tipo.includes('ENVIADO');
+                const simbolo = isEnviado ? '-' : '+';
+                return [
+                    formatarData(t.data),
+                    t.tipo || 'N/A',
+                    t.chavePix || 'N/A',
+                    simbolo + ' R$ ' + (t.valor || 0).toFixed(2).replace('.', ',')
+                ];
+            });
+            
+            doc.autoTable({
+                startY: 85,
+                head: [['Data', 'Tipo', 'Chave PIX', 'Valor']],
+                body: tableData,
+                theme: 'striped',
+                headStyles: { fillColor: [102, 126, 234] }
+            });
+            
+            // Resumo Final
+            const finalY = doc.lastAutoTable.finalY + 10;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text('Resumo do Período:', 20, finalY);
+            
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'normal');
+            doc.text(document.getElementById("totalEntradas").textContent, 20, finalY + 10);
+            doc.text(document.getElementById("totalSaidas").textContent, 20, finalY + 17);
+            doc.text(`Saldo: ${document.getElementById("saldoPeriodo").textContent}`, 20, finalY + 24);
+            
+            // Salvar PDF
+            doc.save(`extrato_${dadosCliente.cpf}_${new Date().getTime()}.pdf`);
+        }
+
+        // ========== FUNÇÕES AUXILIARES ==========
+        function formatarMoeda(valor) {
+            return 'R$ ' + valor.toFixed(2).replace('.', ',');
+        }
+
+        function formatarData(dataStr) {
+            try {
+                return new Date(dataStr).toLocaleString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } catch (e) {
+                return dataStr;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt">
+<head>
+    <title>MAMUTE - Área PIX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/Main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        .pix-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .pix-title {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .pix-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            outline: none;
+        }
+        
+        .btn-enviar-pix {
+            width: 15%;
+            height: 10%;
+            left: 42%;
+            padding: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn-enviar-pix:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-enviar-pix:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .saldo-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .saldo-info strong {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .alert {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .tipo-chave {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 3px;
+            height: 21%;
+
+        }
+        
+        .tipo-chave button {
+            flex: 1;
+            padding: 3px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            height: 12%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tipo-chave button.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+            height:5%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Superior -->
+    <div class="bord-para-menubar">
+        <div class="po"><h1>Mamute Credito</h1></div>
+        <div class="pa"><img src="Logo2.png" style="width:50px;height:50px;" alt="Logo"/></div>
+        <div class="img1">
+            <a href="/Principal_usuario.html">
+                <img src="exit.png" alt="Voltar" style="width:50px;height:50px;"/>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Menu de Navegação -->
+    <nav style="background: #333; padding: 10px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; gap: 20px; padding: 0 20px;">
+            <a href="#" style="color: white; text-decoration: none; font-weight: bold;">area pix</a>
+            <a href="#" style="color: white; text-decoration: none;">Emprestimo</a>
+            <a href="#" style="color: white; text-decoration: none;">Renegociação</a>
+            <a href="#" style="color: white; text-decoration: none;">sald</a>
+        </div>
+    </nav>
+    <br/>   <br/>   <br/>   <br/>   <br/>   <br/>
+<a href="pix.html"><button><==  </button></button></a>
+    <!-- Container PIX -->
+    <div class="pix-container">
+        <h1 class="pix-title">Área PIX</h1>
+        <p class="pix-description">
+            Bem-vindo à área PIX! Aqui você pode gerenciar suas transações instantâneas de forma rápida e segura.
+        </p>
+
+        <!-- Saldo Atual -->
+        <div class="saldo-info">
+            <div>Saldo Disponível</div>
+            <strong>R$ <span id="saldoAtual">0,00</span></strong>
+        </div>
+
+        <!-- Formulário PIX -->
+        <form id="formPix">
+            <div class="form-group">
+                <label class="form-label">Tipo de Chave PIX:</label>
+                <div class="tipo-chave">
+                    <button type="button" class="btn-tipo active" data-tipo="cpf">CPF</button>
+                    <button type="button" class="btn-tipo" data-tipo="email">E-mail</button>
+                    <button type="button" class="btn-tipo" data-tipo="telefone">Telefone</button>
+                    <button type="button" class="btn-tipo" data-tipo="aleatoria">Aleatória</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="chavePix" class="form-label">Chave PIX:</label>
+                <input 
+                    type="text" 
+                    id="chavePix" 
+                    name="chavePix" 
+                    class="form-control" 
+                    placeholder="Digite a chave PIX"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="valor" class="form-label">Valor:</label>
+                <input 
+                    type="text" 
+                    id="valor" 
+                    name="valor" 
+                    class="form-control" 
+                    placeholder="R$ 0,00"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn-enviar-pix" id="btnEnviar">
+                Enviar PIX
+            </button>
+        </form>
+
+        <!-- Mensagens -->
+        <div id="mensagem"></div>
+    </div>
+
+    <script>
+    // ========== CARREGAR SALDO ==========
+    fetch("/api/user")
+        .then(r => r.json())
+        .then(dados => {
+            const saldo = dados.dinheiro ?? 0;
+            document.getElementById("saldoAtual").textContent = saldo.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        })
+        .catch(err => {
+            console.error("Erro ao carregar saldo:", err);
+        });
+
+    // ========== TIPO DE CHAVE PIX ==========
+    const botoesChave = document.querySelectorAll('.btn-tipo');
+    botoesChave.forEach(btn => {
+        btn.addEventListener('click', function() {
+            botoesChave.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const tipo = this.dataset.tipo;
+            const input = document.getElementById('chavePix');
+            
+            switch(tipo) {
+                case 'cpf':
+                    input.placeholder = '000.000.000-00';
+                    break;
+                case 'email':
+                    input.placeholder = 'exemplo@email.com';
+                    break;
+                case 'telefone':
+                    input.placeholder = '(11) 98765-4321';
+                    break;
+                case 'aleatoria':
+                    input.placeholder = 'Chave aleatória';
+                    break;
+            }
+        });
+    });
+
+    // ========== MÁSCARA DE VALOR ==========
+    const inputValor = document.getElementById('valor');
+    inputValor.addEventListener('input', function(e) {
+        let valor = e.target.value.replace(/\D/g, '');
+        valor = (parseInt(valor) / 100).toFixed(2);
+        e.target.value = 'R$ ' + valor.replace('.', ',');
+    });
+
+    // ========== ENVIAR PIX ==========
+    document.getElementById('formPix').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const btnEnviar = document.getElementById('btnEnviar');
+        const mensagemDiv = document.getElementById('mensagem');
+        
+        const chavePix = document.getElementById('chavePix').value;
+        const valorTexto = document.getElementById('valor').value;
+        const valor = valorTexto.replace('R$ ', '').replace(',', '.');
+        
+        // Validações
+        if (!chavePix || !valor) {
+            mensagemDiv.innerHTML = '<div class="alert alert-danger">Preencha todos os campos!</div>';
+            return;
+        }
+        
+        if (parseFloat(valor) <= 0) {
+            mensagemDiv.innerHTML = '<div class="alert alert-danger">Valor deve ser maior que zero!</div>';
+            return;
+        }
+        
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = 'Processando...';
+        mensagemDiv.innerHTML = '';
+        
+        const formData = new URLSearchParams();
+        formData.append('chavePix', chavePix);
+        formData.append('valor', valor);
+        
+        try {
+            const response = await fetch('/api/pix/enviar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData.toString()
+            });
+            
+            const resultado = await response.json();
+            
+            if (response.ok) {
+                mensagemDiv.innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>✅ ${resultado.mensagem}</strong><br>
+                        Valor: R$ ${resultado.valor.toFixed(2).replace('.', ',')}<br>
+                        Chave PIX: ${resultado.chavePix}<br>
+                        Novo saldo: R$ ${resultado.novoSaldo.toFixed(2).replace('.', ',')}
+                    </div>
+                `;
+                
+                // Atualizar saldo na tela
+                document.getElementById("saldoAtual").textContent = resultado.novoSaldo.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                
+                // Limpar formulário
+                document.getElementById('chavePix').value = '';
+                document.getElementById('valor').value = '';
+                
+                // Redirecionar após 3 segundos
+                setTimeout(() => {
+                    window.location.href = '/Principal_usuario.html';
+                }, 3000);
+            } else {
+                mensagemDiv.innerHTML = `<div class="alert alert-danger">❌ ${resultado.erro}</div>`;
+            }
+            
+        } catch (error) {
+            console.error('Erro:', error);
+            mensagemDiv.innerHTML = '<div class="alert alert-danger">❌ Erro de conexão!</div>';
+        } finally {
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = 'Enviar PIX';
+        }
+    });
+    </script>
+</body>
+</html>
